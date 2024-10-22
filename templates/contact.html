@@ -1,0 +1,35 @@
+{{template "header"}}
+
+<body>
+    <header>
+        <h1>Contact Us</h1>
+    </header>
+    <div class="container">
+        <nav><a href="/about">About Us</a></nav>
+        <nav><a href="/">Home</a></nav>
+        <div class="content">
+            <h2>Contact Us</h2>
+            <p>Email: info@example.com</p>
+            <p>Phone: 123-456-7890</p>
+            {{if .Success}}
+            <p>Name: {{.Message.Name}}</p>
+            <p>Phone: {{.Message.Phone}}</p>
+            <p>Course: {{.Message.Course}}</p>
+            <p>Message: {{.Message.Message}}</p>
+            {{else}}
+            <form method="POST" action="/contact">
+                <label for="name">Name</label>
+                <input type="text" name="name"><br>
+                <label for="phone">Phone</label>
+                <input type="text" name="phone"><br>
+                <label for="email">Email</label>
+                <input type="text" name="email"><br>
+                <label for="message">Message</label>
+                <textarea name="message"></textarea><br>
+                <input type="submit" name="submit" value="Send">
+            </form>
+            {{end}}
+        </div>
+    </div>
+</body>
+{{template "footer"}}
